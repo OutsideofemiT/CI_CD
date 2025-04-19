@@ -1,9 +1,10 @@
 {
   "extends": "../tsconfig.json",
-    "compilerOptions": {
-      "target": "es5",
-      "lib": ["es5", "dom"],
-      "types": ["cypress", "node"]
-    },
-    "include": ["**/*.ts"]
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node"]
+  },
+  "include": ["component/**/*.ts", "e2e/**/*.ts", "support/**/*.ts"],
+  "exclude": ["../dist", "../server/dist", "../client/dist"]
 }
