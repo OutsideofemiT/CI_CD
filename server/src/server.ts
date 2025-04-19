@@ -1,5 +1,4 @@
 import express from 'express';
-// import path from 'node:path';
 import db from './config/connection.js';
 import routes from './routes/index.js';
 
@@ -8,14 +7,17 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Serves static files in the entire client's dist folder
 app.use(express.static('../client/dist'));
-
 app.use(routes);
 
-db.once('open', () => {
-  app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
+db.once('open', async () => {
+  if (process.env.RUN_SEED === 'true') {
+    console.log('🌱 Seeding database...');
+    await import('./seeds/seed.js');
+  }
+
+  app.listen(PORT, () => {
+    console.log(`🌍 Now listening on localhost:${PORT}`);
+  });
 });
 
-//testing
