@@ -5,7 +5,7 @@ import cleanDB from "./cleanDb.js";
 import pythonQuestions from './pythonQuestions.json' assert { type: "json" };
 
 db.once('open', async () => {
-  await cleanDB('Question', 'questions');
+  await cleanDB('Question');
 
   await Question.insertMany(pythonQuestions);
 
