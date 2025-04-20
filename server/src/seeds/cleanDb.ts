@@ -19,8 +19,4 @@ export default async (modelName: "Question") => {
   } catch (err) {
     throw err;
   }
-<<<<<<< Updated upstream
 };
-=======
-};
->>>>>>> Stashed changes
